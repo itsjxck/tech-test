@@ -1,0 +1,41 @@
+{
+  "name": "@service/api",
+  "version": "0.0.0",
+  "imports": {
+    "#trpc": "./src/trpc/index.ts",
+    "#db": "./src/db/index.ts",
+    "#db/*": "./src/db/*.ts"
+  },
+  "exports": {
+    ".": "./src/routes/index.ts"
+  },
+  "scripts": {
+    "dev": "wrangler dev --port 4000 --inspector-port 5000 --persist-to ../../.wrangler/state",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "db:studio": "drizzle-kit studio",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply DB --local --persist-to ../../.wrangler/state"
+  },
+  "dependencies": {
+    "@trpc/server": "11.0.0-rc.660",
+    "drizzle-orm": "0.38.3",
+    "drizzle-zod": "0.5.1",
+    "partyserver": "^0.0.59",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241230.0",
+    "@eslint/js": "^9.17.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@types/node": "^22.10.5",
+    "better-sqlite3": "^11.7.2",
+    "drizzle-kit": "^0.30.1",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5",
+    "typescript-eslint": "^8.19.1",
+    "wrangler": "^3.99.0"
+  }
+}
